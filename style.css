@@ -1,0 +1,557 @@
+/* The main colors of the website (may add pink to fit logo, see if it flows */
+:root {
+  --purple: #6247aa;
+  --black: #000;
+  --gray: #736f72;
+  --white: #fff;
+  --pink: #db6198;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.navbar {
+  background: var(--black);
+  height: 60px;
+  padding: 0.5rem calc((100vw-1200px) / 2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.navbar_logo {
+  color: var(--white);
+  text-decoration: none;
+  padding: 1rem;
+}
+
+.navbar_link {
+  /* I can take the 1rem out to have it align fully to left */
+  color: var(--white);
+  text-decoration: none;
+  padding: 0rem 1rem;
+}
+
+.navbar_link:hover {
+  color: var(--purple);
+}
+
+/* Page not scrolling, try changing overflow to visiable or auto. Tried didn't work-- fixed 2/27  */
+@media screen and (max-width: 768px) {
+  body.active {
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+
+  .navbar_link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar_menu {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 100px);
+    position: absolute;
+    width: 100%;
+    top: -1000px;
+  }
+
+  .navbar_menu.active {
+    top: 100%;
+    opacity: 1;
+    z-index: 99;
+    height: 100vh;
+    font-size: 1.5rem;
+    background: var(--black);
+  }
+
+  .navbar_toggle .bar {
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background: var(--white);
+    display: block;
+    cursor: pointer;
+  }
+
+  #mobile-menu {
+    position: absolute;
+    top: 15%;
+    right: 5%;
+    transform: translate(5%, 20%);
+  }
+
+  #mobile-menu.is-active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  #mobile-menu.is-active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  #mobile-menu.is-active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+/* Hero Section */
+/* Change images- free image have Ren design something or put a solid color */
+.hero {
+
+  background-image: url("./images/img5.jpg");
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  padding: 0.5rem calc((100vw - 1200px) /2);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.hero_content {
+  color: var(--white);
+  padding: 3rem 1rem;
+  line-height: 1;
+}
+
+/* clamp- font will resize depending on screen size */
+.hero_content h1 {
+  font-size: clamp(3rem, 8vw, 7rem);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.hero_content p {
+  font-size: clamp(1rem, 4vw, 2.5rem);
+  margin-bottom: 3rem;
+}
+
+.button {
+  padding: 1rem 3rem;
+  border: none;
+  background: var(--black);
+  color: var(--white);
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+  transition: 0.3s;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background: var(--purple);
+}
+
+/* Services Section */
+
+.services {
+  padding: 8rem calc((100vw - 1200px) /2);
+}
+
+.services_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1rem;
+}
+
+/* Image is not resizing correctly make sure to debug */
+
+.services_img {
+  width: 100%;
+  height: 100%;
+  border-image: fill;
+}
+
+.topline {
+  color: var(--pink);
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.services_heading {
+  margin-bottom: 1rem;
+  font-size: clamp(2rem, 6vw, 3rem);
+}
+
+.services_features {
+  list-style: none;
+}
+
+.services_feature {
+  margin-bottom: 1.5rem;
+  font-size: clamp(1rem, 5vw, 1.2rem);
+}
+
+.fa-check-circle {
+  margin-right: 0.5rem;
+  color: var(--pink);
+}
+
+@media screen and (max-width: 768px) {
+  .services_container {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* Testimonies Section */
+
+.memberships {
+  background: var(--black);
+  color: var(--white);
+  padding: 6rem calc((100vw - 1100px) / 2);
+  text-align: center;
+}
+
+.memberships h1 {
+  margin-bottom: 1rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  padding: 0 1rem;
+}
+
+.membership_join {
+  margin-bottom: 3rem;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  padding: 1rem;
+}
+
+/* Switching back and forth from align-items:flex-start to center to see if problem fixed. (Research mobile google dev tools)*/
+.membership_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+/* Make sure to fix the align on the cards uneven */
+
+.membership_cards {
+  padding: 2rem;
+  min-height: 450px;
+  width: 325px;
+  background: var(--white);
+  color: var(--black);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.membership_perks {
+  min-height: 150px;
+}
+
+.membership_cards p {
+  margin-bottom: 1rem;
+}
+
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: var(--purple);
+}
+
+.membership_cards h3 {
+  font-size: 1rem, 5vw, 2rem;
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 1100px) {
+  .membership_wrapper {
+    flex-direction: colum;
+    align-items: center;
+  }
+
+  .membership_cards {
+    width: 90%;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Teams Section, may comment out until I fix error- or it maybe added to another file */
+
+.team {
+  padding: 8rem calc((100vw - 1100px) / 2);
+}
+
+.team_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(auto, 350px);
+}
+
+.team_card {
+  margin: 1rem;
+  border-radius: 10px;
+  position: relative;
+}
+
+.team_text {
+  padding: 1rem;
+
+}
+
+.team_text {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+}
+
+.team_desc {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  line-height: 1.4;
+}
+
+.team_card p {
+  position: absolute;
+  bottom: 30px;
+  color: var(--white);
+  left: 25px;
+  font-size: 3rem;
+}
+
+.team_img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.text_text :nth-child(1) {
+  grid-row: 1/3;
+  grid-column: 2/3;
+}
+
+.team_text:nth-child(2) {
+  grid-row: 5/6;
+  grid-column: 1/2;
+}
+
+.team_card :nth-child(3) {
+  grid-row: 1/3;
+  grid-column: 1/2;
+}
+
+.team_card :nth-child(4) {
+  grid-row: 2/4;
+  grid-column: 2/3;
+}
+
+.team_card :nth-child(5) {
+  grid-row: 3/5;
+  grid-column: 1/2;
+}
+
+.team_card :nth-child(6) {
+  grid-row: 4/6;
+  grid-column: 2/3;
+}
+
+@media screen and (max-width: 768px) {
+  .team_wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+}
+
+.text_text :nth-child(1) {
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+
+.team_text:nth-child(2) {
+  grid-row: 6/7;
+  grid-column: 1/2;
+}
+
+.team_card :nth-child(3) {
+  grid-row: 3/4;
+  grid-column: 1/2;
+}
+
+.team_card :nth-child(4) {
+  grid-row: 4/5;
+  grid-column: 1/2;
+}
+
+.team_card :nth-child(5) {
+  grid-row: 5/6;
+  grid-column: 1/2;
+}
+
+.team_card :nth-child(6) {
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+
+@media screen and (max-width: 768px) {
+  .team_wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+}
+
+/* Email/form Section */
+/* Get new background image off of canva or change it back to img5 */
+
+.email {
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.6) 35%,
+      rgba(0, 0, 0, 0.1) 100%),
+    url('./images/img5.jpg') no-repeat center;
+  background-size: cover;
+  height: 450px;
+  width: 100%;
+  padding: 5rem calc((100vw -1300px) /2);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.email_content h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: clamp(1rem, 5vw, 3rem);
+  padding: 0 1rem;
+}
+
+.email_content p {
+  text-align: center;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  padding: 0 1rem;
+  margin-bottom: 2rem;
+}
+
+form {
+  z-index: 10;
+}
+
+/* change padding if it still looks too big */
+.form_wrap input {
+  padding: 1rem 1.5rem;
+  outline: none;
+  width: 350px;
+  height: 50px;
+  border: none;
+  margin-right: 1rem;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 768px) {
+  .form_wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  .form_wrap input {
+    margin-bottom: 1rem;
+    width: 100%;
+    margin-right: 0;
+  }
+
+  button {
+    width: 100%;
+    min-width: 350px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .button {
+    width: 100%;
+    min-width: 250px;
+  }
+}
+
+/* Footer Section */
+/* Make sure to change the padding on footer link to 0 1rem */
+.footer {
+  padding: 5rem calc((100vw - 1100px) /2);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  color: var(--white);
+  background: var(--black);
+}
+
+.footer_desc {
+  padding: 0 2rem;
+}
+
+.footer_desc h1 {
+  margin-bottom: 2rem;
+  color: var(--purple);
+  font-size: 1.5rem;
+}
+
+.footer_desc p {
+  margin-bottom: 1rem;
+}
+
+#phone {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.footer_wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.footer_link {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 1rem;
+}
+
+.footer_title {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.footer_link {
+  text-decoration: none;
+  color: rgb(242, 242, 242);
+  font-size: 14px;
+  margin-bottom: 0.5rem;
+  transition: 0.3s ease-in-out;
+}
+
+.footer_link:hover {
+  color: var(--purple);
+}
+
+@media screen and (max-width: 820px) {
+  .footer_wrapper {
+    grid-template-columns: 1fr;
+
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .footer_desc {
+    padding: 1rem;
+  }
+
+  .footer_link {
+    padding: 1rem;
+  }
+}
+
