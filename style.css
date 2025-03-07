@@ -640,6 +640,7 @@ h2:after {
   transition: 3s;
 }
 
+
 .field:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
@@ -647,26 +648,6 @@ h2:after {
 .field:focus {
   background-color: var(--white);
   border: 2px solid rgba(30, 85, 250, 0.47);
-}
-
-.textarea {
-  min-height: 200px;
-  min-width: 520px;
-}
-
-.textarea {
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-}
- 
-.textarea {
-  padding: 10px;
-  max-width: 100%;
-  line-height: 1.5;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-shadow: 1px 1px 1px #999;
-  text-wrap: wrap;
 }
  
 
@@ -691,5 +672,7 @@ h2:after {
     height: 200px;
   }
 }
+
+
 
 /* GSAP Animations */

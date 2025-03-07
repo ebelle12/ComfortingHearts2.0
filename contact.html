@@ -51,7 +51,8 @@
       </div>
     </div>
     <div class="contact-us">
-      <div class="textarea">
+        <!-- May need to link to Supabase... form action attribute -->
+         <!-- Form action maybe "post" instead of get -->
       <form>
         <h1>Contact Us</h1>
         <input name="first_name" type="text"  class="field"  required   placeholder="First:" />
@@ -59,23 +60,18 @@
         <input name="phone" type="tel"   class="field" required placeholder="Phone:" />
         <input name="email_add" type="email"  class="field" required  placeholder="Email:" />
       </br>
-        <!-- <input name="text_area" type="text" class="textarea" required placeholder="Message:" /> -->
-        <textarea name="text_area" id="message" style="white-space: pre-wrap;"></textarea>
+         <textarea id="text_area" name="text_area" rows="5" cols="75" placeholder="Message:"></textarea>
           </br>
   </br>
         <button class="button is-primary" type="submit">Submit</button>
       </form>
-      <!-- <span>or message us on social media</span> -->
+     
     </div>
   </div>
-    <!-- <div class="icons">
-      <a href="https://www.facebook.com/profile.php?id=61567434045822" class="icon"><i class="fa-brands fa-facebook"></i></a>
-      <a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#" class="icon"><i class="fa-brands fa-tiktok"></i></a>
-      <a href="#" class="icon"><i class="fa-brands fa-linkedin"></i></a>
+   
 
       
-      </div> -->
+     
     </div>
   </div>
 
@@ -117,18 +113,17 @@
   
 const { createClient } = supabase
  supabase = createClient('https://ialjfshfxcfvdjvtqzfm.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlhbGpmc2hmeGNmdmRqdnRxemZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEzMDEyMjEsImV4cCI6MjA1Njg3NzIyMX0.oyu7NbF4Yyiq_1ZBGuRyluYo5Rd8BvA2IlOhI28BPlw')
-const form = document.querySelector('.contact-us > form' ) 
+const form = document.querySelector('form') 
 form.addEventListener('submit', async (event) => {
   event.preventDefault()
-  const formInputs = form.querySelectorAll('input')
-  let submission = {}
-  formInputs.forEach(element => {
-    const {value, name} = element
-    if(value) {
-      submission[name] = value
+  const submission = {}
+  for (let element of form.elements) {
+    if (element.name) {
+      submission[element.name] = element.value; 
+      element.value='';
     }
-  })
-  
+    
+  }
   const {error, data} = await supabase.from('contact_info').insert(submission)
   if(error) {
     
@@ -137,7 +132,7 @@ form.addEventListener('submit', async (event) => {
   } else {
     alert('Thank you for entering your information!')
   }
-  formInputs.forEach(element => element.value = '')
+  
 })
 
 </script>
