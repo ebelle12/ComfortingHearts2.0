@@ -21,11 +21,11 @@
     <div class="contact-us">
       <form>
         <h1>Contact</h1>
-        <input type="text" placeholder="First:" />
-        <input type="text" placeholder="Last:" />
-        <input type="number" placeholder="Phone:" />
-        <input type="text" placeholder="Email:" />
-        <button>Submit</button>
+        <input name="first_name" type="text" required   placeholder="First:" />
+        <input name="last_name" type="text"  required  placeholder="Last:" />
+        <input name="phone" type="tel"   required placeholder="Phone:" />
+        <input name="email_add" type="email"  required  placeholder="Email:" />
+        <button class="button is-primary" type="submit">Submit</button>
       </form>
       <span>or message us on social media</span>
     </div>
@@ -38,7 +38,34 @@
     </div>
 
   </div>
-  <script src="script.js"></script>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  
+const { createClient } = supabase
+ supabase = createClient('https://ialjfshfxcfvdjvtqzfm.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlhbGpmc2hmeGNmdmRqdnRxemZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEzMDEyMjEsImV4cCI6MjA1Njg3NzIyMX0.oyu7NbF4Yyiq_1ZBGuRyluYo5Rd8BvA2IlOhI28BPlw')
+const form = document.querySelector('.contact-us > form' ) 
+form.addEventListener('submit', async (event) => {
+  event.preventDefault()
+  const formInputs = form.querySelectorAll('input')
+  let submission = {}
+  formInputs.forEach(element => {
+    const {value, name} = element
+    if(value) {
+      submission[name] = value
+    }
+  })
+  
+  const {error, data} = await supabase.from('contact_info').insert(submission)
+  if(error) {
+    
+    alert('Please fill out all fields.  For the phone number, do not use dashes.  (Example:  2125551212)')
+    
+  } else {
+    alert('Thank you for entering your information!')
+  }
+  formInputs.forEach(element => element.value = '')
+})
 
+</script>
 </html>
