@@ -43,27 +43,75 @@
   </nav>
 
   <div class="container" id="container">
+    <div class="contact-box"> 
+      <div class="left">
+        <div class="right">
+          
+        </div>
+      </div>
+    </div>
     <div class="contact-us">
+      <div class="textarea">
       <form>
-        <h1>Contact</h1>
-        <input name="first_name" type="text" required   placeholder="First:" />
-        <input name="last_name" type="text"  required  placeholder="Last:" />
-        <input name="phone" type="tel"   required placeholder="Phone:" />
-        <input name="email_add" type="email"  required  placeholder="Email:" />
+        <h1>Contact Us</h1>
+        <input name="first_name" type="text"  class="field"  required   placeholder="First:" />
+        <input name="last_name" type="text"  class="field" required  placeholder="Last:" />
+        <input name="phone" type="tel"   class="field" required placeholder="Phone:" />
+        <input name="email_add" type="email"  class="field" required  placeholder="Email:" />
+      </br>
+        <!-- <input name="text_area" type="text" class="textarea" required placeholder="Message:" /> -->
+        <textarea name="text_area" id="message" style="white-space: pre-wrap;"></textarea>
+          </br>
+  </br>
         <button class="button is-primary" type="submit">Submit</button>
       </form>
-      <span>or message us on social media</span>
+      <!-- <span>or message us on social media</span> -->
     </div>
-    <div class="icons">
+  </div>
+    <!-- <div class="icons">
       <a href="https://www.facebook.com/profile.php?id=61567434045822" class="icon"><i class="fa-brands fa-facebook"></i></a>
       <a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a>
       <a href="#" class="icon"><i class="fa-brands fa-tiktok"></i></a>
       <a href="#" class="icon"><i class="fa-brands fa-linkedin"></i></a>
 
+      
+      </div> -->
     </div>
+  </div>
 
+  <div class="footer">
+    <div class="footer_wrapper">
+      <div class="footer_desc">
+        <h1>Comforting Hearts Foundation Inc.</h1>
+        <p>We're located in St. Louis, MO.</p>
+        <p id="phone">314-669-1669</p>
+      </div>
+      <div class="footer_links">
+        <h2 class="footer_title">Contact Us</h2>
+        <a href="/contact.html" class="footer_link">Contact</a>
+        <a href="/contact.html" class="footer_link">Support</a>
+        <a href="https://www.zeffy.com/donation-form/healing-hearts-supporting-our-community-through-loss" class="footer_link">Donations</a>
+      </div>
+    </div>
+    <div class="footer_wrapper">
+      <div class="footer_links">
+        <h2 class="footer_title">Community</h2>
+        <a class="footer_link" href="/">Membership</a>
+        <a class="footer_link" href="/">Volunteers</a>
+        <a class="footer_link" href="/">FAQ</a>
+      </div>
+      <div class="footer_links">
+        <h2 class="footer_title">Social Media</h2>
+        <a class="footer_link" href="/">Facebook</a>
+        <a class="footer_link" href="/">Instagram</a>
+        <a class="footer_link" href="/">YouTube</a>
+        <a class="footer_link" href="/">TikTok</a>
+        <a class="footer_link" href="/">LinkedIn</a>
+      </div>
+    </div>
   </div>
 </body>
+<script src="app.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   
@@ -93,5 +141,5 @@ form.addEventListener('submit', async (event) => {
 })
 
 </script>
-<script src="app.js"></script>
+
 </html>
